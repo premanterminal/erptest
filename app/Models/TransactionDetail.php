@@ -12,4 +12,8 @@ class TransactionDetail extends Model
     protected $casts = [
         'product' => 'array'
     ];
+
+    public function transaction(){
+        return $this->belongsTo(Transaction::class);
+    }
 }
