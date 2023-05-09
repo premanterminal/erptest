@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cashier_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('invpice_code')->unique();
+            $table->decimal('cash', 48, 4);
+            $table->decimal('change', 48, 4);
+            $table->decimal('grand_total', 48, 4);
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
